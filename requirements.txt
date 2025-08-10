@@ -1,0 +1,25 @@
+# Dependencias del Proyecto Agente Cóndor Andino
+# Análisis bursátil y enriquecimiento de datos
+
+# Procesamiento de datos
+pandas>=1.5.0
+numpy>=1.21.0
+
+# Análisis técnico
+pandas-ta>=0.3.14b
+
+# Descarga de datos financieros
+yfinance>=0.2.0
+
+# Visualización
+matplotlib>=3.5.0
+seaborn>=0.11.0
+
+# Machine Learning (para clustering)
+scikit-learn>=1.1.0
+
+# Base de datos (opcional)
+pymysql>=1.0.0
+
+# Utilidades
+python-dateutil>=2.8.0
