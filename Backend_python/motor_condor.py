@@ -21,7 +21,9 @@ def limpiar_y_estandarizar(df):
     try:
         if 'date' not in df.columns:
              raise ValueError(f"La columna 'date' o 'fecha' no se encontró. Columnas disponibles: {df.columns.tolist()}")
-        df['date'] = pd.to_datetime(df['date'], dayfirst=True).dt.normalize()
+        
+        # Convertir fechas - Yahoo Finance usa formato ISO (YYYY-MM-DD)
+        df['date'] = pd.to_datetime(df['date'], format='mixed').dt.normalize()
         print("   - Columna 'date' procesada y normalizada correctamente.")
     except Exception as e:
         print(f"!! ERROR al procesar la columna de fecha: {e}")

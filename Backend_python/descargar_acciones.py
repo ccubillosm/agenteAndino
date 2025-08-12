@@ -65,7 +65,8 @@ def descargar_ohlcv_para_ticker(nemo: str) -> pd.DataFrame:
     data["ticker"] = nemo
     
     # Normalizar tipos
-    data["date"] = pd.to_datetime(data["date"]).dt.strftime("%d/%m/%Y")
+    data["date"] = pd.to_datetime(data["date"]).dt.strftime("%Y-%m-%d")
+    
     
     # Seleccionar solo las columnas que existen
     required_cols = ["date", "ticker"]
