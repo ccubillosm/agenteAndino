@@ -16,7 +16,7 @@ ARCHIVO_OPORTUNIDADES = 'output/oportunidades_de_divergencia.csv'
 
 # Configuración de Yahoo Finance
 YF_SANTIAGO_SUFFIX = '.SN'  # Sufijo para acciones chilenas
-FECHA_INICIO = "2020-01-01"
+FECHA_INICIO = "2025-04-01"
 
 # Configuración de análisis
 NUMERO_DE_CLUSTERS = 3
@@ -24,7 +24,7 @@ NUMERO_DE_CLUSTERS = 3
 # Configuración de base de datos MySQL (opcional)
 DB_HOST = 'localhost'
 DB_PORT = 3306
-DB_NAME = 'agente_condor'
+DB_NAME = 'agente_condor_v2'
 DB_USER = 'root'
 DB_PASSWORD = ''
 
