@@ -218,9 +218,27 @@ class VisualizadorCondor:
                 
                 # Últimos valores
                 ultimo = df_ticker.iloc[-1]
-                print(f"   Precio actual: ${ultimo.get('close', 'N/A'):,.2f}")
-                print(f"   RSI: {ultimo.get('rsi', 'N/A'):.2f}")
-                print(f"   Volumen: {ultimo.get('volume', 'N/A'):,}")
+                close_val = ultimo.get('close', 'N/A')
+                rsi_val = ultimo.get('rsi', 'N/A')
+                volume_val = ultimo.get('volume', 'N/A')
+                
+                # Formatear precio si es numérico
+                if pd.notna(close_val) and isinstance(close_val, (int, float)):
+                    print(f"   Precio actual: ${close_val:,.2f}")
+                else:
+                    print(f"   Precio actual: {close_val}")
+                
+                # Formatear RSI si es numérico
+                if pd.notna(rsi_val) and isinstance(rsi_val, (int, float)):
+                    print(f"   RSI: {rsi_val:.2f}")
+                else:
+                    print(f"   RSI: {rsi_val}")
+                
+                # Formatear volumen si es numérico
+                if pd.notna(volume_val) and isinstance(volume_val, (int, float)):
+                    print(f"   Volumen: {volume_val:,}")
+                else:
+                    print(f"   Volumen: {volume_val}")
         
         # Datos fundamentales
         if self.df_fundamental is not None:
@@ -229,8 +247,20 @@ class VisualizadorCondor:
                 print(f"\n💰 DATOS FUNDAMENTALES:")
                 ultimo_fund = df_fund.iloc[-1]
                 print(f"   Año: {ultimo_fund['year']}")
-                print(f"   P/E Ratio: {ultimo_fund.get('pe_ratio', 'N/A'):.2f}")
-                print(f"   ROE: {ultimo_fund.get('roe', 'N/A'):.3f}")
+                pe_ratio_val = ultimo_fund.get('pe_ratio', 'N/A')
+                roe_val = ultimo_fund.get('roe', 'N/A')
+                
+                # Formatear P/E Ratio si es numérico
+                if pd.notna(pe_ratio_val) and isinstance(pe_ratio_val, (int, float)):
+                    print(f"   P/E Ratio: {pe_ratio_val:.2f}")
+                else:
+                    print(f"   P/E Ratio: {pe_ratio_val}")
+                
+                # Formatear ROE si es numérico
+                if pd.notna(roe_val) and isinstance(roe_val, (int, float)):
+                    print(f"   ROE: {roe_val:.3f}")
+                else:
+                    print(f"   ROE: {roe_val}")
                 print(f"   Salud Financiera: {ultimo_fund.get('salud_financiera', 'N/A')}")
         
         # Perfil
@@ -247,7 +277,11 @@ class VisualizadorCondor:
                 print(f"\n🎯 OPORTUNIDADES:")
                 print(f"   Oportunidades detectadas: {len(oportunidades)}")
                 for _, op in oportunidades.iterrows():
-                    print(f"   - Fecha: {op.get('date', 'N/A')}, RSI: {op.get('rsi', 'N/A'):.2f}")
+                    rsi_op = op.get('rsi', 'N/A')
+                    if pd.notna(rsi_op) and isinstance(rsi_op, (int, float)):
+                        print(f"   - Fecha: {op.get('date', 'N/A')}, RSI: {rsi_op:.2f}")
+                    else:
+                        print(f"   - Fecha: {op.get('date', 'N/A')}, RSI: {rsi_op}")
     
     def mostrar_menu_interactivo(self):
         """Muestra un menú interactivo para explorar los datos"""
